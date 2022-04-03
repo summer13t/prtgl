@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(200, 225, 216);
+    font-family: Arial;
+    font-size: 16px;
+    padding: 40px;
+
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+}
+.first {
+    color: darkred;
+}
+
+#your-name {
+    background-color:rgb(141, 141, 161);
+    border: 5px solid #444;
+    width: 400px;
+    padding: 20px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button, input {
+    padding: 10px;
+    font-size: 16px;
+    color:rgb(45, 45, 105);
+    background-color: rgb(181, 219, 220);
+}
+
+#your-name h2 {
+    color: rgb(74, 41, 105);
+}
+
+#Schvetz-image {
+    width: 250px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
