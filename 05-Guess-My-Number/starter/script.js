@@ -12,7 +12,8 @@
 // document.querySelector('.guess').value = 17;
 
 const secretNumber = Math.trunc(Math.random()*20) + 1;
-let score = 20;let highScore = 0;
+let score = 20;
+let highScore = 0;
 
 
 document.querySelector('.check').addEventListener('click', function() {
@@ -65,3 +66,5 @@ document.querySelector('.again').addEventListener('click', function() {
     const guess = document.querySelector('.guess').value = '';
 
 });
+
+// gotovim temy po ustraneniy dvoinogo koda
