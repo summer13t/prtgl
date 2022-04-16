@@ -12,16 +12,34 @@ const diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
+
+
 //starting condition
+
+let scores, currentScore, activePlayer, playing; 
+
+const init = function() {
+playing = true;
+current0El.textContent = 0;
+current1El.textContent = 0;
 score0El.textContent = 0;
 score1El.textContent = 0;
-
+currentScore = 0;
+activePlayer = 0;
+scores = [0, 0];
+player0El.classList.remove('player--winner');
+player0El.classList.add('player--active');
+player1El.classList.remove('player--winner', 'player--active');
 diceEl.classList.add('hidden');
 
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true; 
+// scores[0] = 0; FIXED 
+// scores[1] = 0;
+// scores.fill(0) // DONE : ) IF IT WAS A CONST I COULD FILL THE ARRAY LIKE THAT ;
+
+};
+
+init();
+ 
 
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -61,7 +79,7 @@ btnHold.addEventListener('click', function () {
 
   //2. Check if players score >= 100
 
-  if(scores[activePlayer] >= 20 ) {
+  if(scores[activePlayer] >= 100 ) {
   //finish the game
   playing = false;
   document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
@@ -74,19 +92,5 @@ btnHold.addEventListener('click', function () {
   }  
 });
 
-btnNew.addEventListener('click', function () {
-playing = true;
-document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner', 'player--active');
-document.getElementById(`current--${activePlayer}`).textContent = 0;
-currentScore = 0;
-activePlayer = 0;
-score0El.textContent = 0;
-score1El.textContent = 0;
-scores[0] = 0;
-scores[1] = 0;
-document.querySelector('.player--0').classList.add('player--active');
-
-
-
-});
+btnNew.addEventListener('click', init);  //  !!! mi ne delaem init (), ibo eta function i tak vizovetsya javascriptom izzza ADDevent;
 
