@@ -92,3 +92,39 @@ function addDeclr(a, b) {
 }
 
 addDeclr(2, 4, 6);
+
+// Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+//   Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica);
+console.log('After marriage:', marriedJessica);
+//its the same, coz this two objects are pointing on the same adress in the HEAP.
+// marriedJessica = {} - cannot be done, coz its a CONST, and with const we can change things in a HEAP, but not in a CALL STACK, what is actually true for primitive types
+// FIX;
+
+//So how to copy object ?
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Mary', 'John'],
+};
+const jessicaCopy = Object.assign({}, jessica2); //this will make a new object for copy of jessica2, but it works only for level 1 (if it will be object in the object, it will not work)
+jessicaCopy.lastName = 'Davis';
+jessicaCopy.age = 28;
+jessicaCopy.family.push('Elvis', 'Duda');
+console.log('Before marriage:', jessica2);
+console.log('After marriage:', jessicaCopy);
+
+//BUG so ! Both jessica`s objects have a property called FAMILY, whitch points at the same object in the memory HEAP. for DEEEP COPYING we gonna make some complex things later in course. GL ! thats all in this section
