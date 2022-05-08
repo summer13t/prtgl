@@ -296,4 +296,3 @@ console.log(drink2)
 
 console.log(`I like to drink ${age >= 18 ? 'wine' : 'water'}`);
 */
-
