@@ -28,7 +28,70 @@ const restaurant = {
   orderDelivery: function ({starterIndex=1, mainIndex=0, adress, time='20:00'}) {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time}`)
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+  }
 };
+
+// SPREAD OPERATOR
+const arr = [8,9,7];
+const newBadArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(newBadArr);
+
+const newGoodArr = [1, 2, ...arr];
+console.log(newGoodArr);
+
+console.log(...newGoodArr);
+
+// EXAMPLE 
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+// COPY ARRAy
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// join 2 arrays or more
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+// FIX BUG !!!! ITERABLES ARE : All data structures, except THE OBJECTS (Arrays, Strings, maps, sets)
+
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.']
+console.log(letters);
+console.log(...str);
+
+// FIX console.log(`${...str} NOT WORKIN`); COZ ITS (MULTIPLE VALUES, SEPARETED BY COMAS) USUALLY EXPECTED ONLY WHEN WE PASS ARGUMENTS IN FUNCTIONS, OR ARE CREATING A NEW ARRAYS ! 
+
+// real-world example
+const ingredients = ['mushrooms', 'avocado', 'cheese'];
+restaurant.orderPasta(...ingredients);
+
+
+// or we can do 
+
+// const ingredientsPromtp = [prompt(`Lets make a pasta! Ingredient 1?`), prompt('Ingredient 2?'), prompt('ingredient 3 ?')]
+// restaurant.orderPasta(...ingredientsPromtp);
+
+// OBJECTS FIX IN ES2018 We CAN ALSO MAKE IT WITH OBJECTS ( SPREAD OPERATOR)
+
+const newRestaurant = {foundedIn: 1998, ...restaurant, founder: 'Giuseppe'};
+console.log(newRestaurant);
+
+// Copying ! 
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'KABAK';
+console.log(restaurant.name);
+console.log(restaurantCopy.name); // U SEE??? ! ITS CHANGING JUST ONE ! (JUST IN COPY, NOT IN MAIN OBJECT )
+
+
+
+
+// destructuring objects 
+
+/*
 restaurant.orderDelivery({
   time: '00:53',
   adress: 'Kozatska 15',
@@ -64,7 +127,7 @@ console.log(openFriday, closeFriday);
 
 
 
-/*
+
 const arr = [2, 7, 8];
 const a = arr[0];
 const b = arr[1];
