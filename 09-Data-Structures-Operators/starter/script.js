@@ -31,9 +31,52 @@ const restaurant = {
 
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+  },
+
+  orderPizza: function (mainIngredient, ...othersIngredients) {
+    console.log(`Here is your pizza ${mainIngredient}-based on, with some ${othersIngredients}`);
+    console.log(mainIngredient, othersIngredients);
   }
 };
 
+//  REST PATTERN  1) DESTRUCTURING
+
+// REST coz on the LEFT side of =
+const [a, b, ...others]  = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [pizza, , risotto, ...otherMenu] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza, risotto, otherMenu); // FIX so it not includes any SKIPPED elements, only rest of them. so ! REST pattern only must be a lAST
+
+// OBJECTS with REST 
+const { sat, ...weekdays} = restaurant.openingHours;
+
+// 2) Functions (rest parametr)
+
+
+const add = function (...numbers) {
+  let sum = 0;
+  for(let i = 0; i < numbers.length; i++)
+    sum += numbers[i]; 
+  console.log(sum);
+};
+add(2,4);
+add(2,4,6,7);
+add(1,2,3,4,5,6,7,8);
+
+const x = [23, 25, 7];
+add(...x);
+
+restaurant.orderPizza('mushrooms', ' ananas', ' Suluguni', " chiken");
+
+
+
+
+
+// SPREAD coz on the RIGHT side of =
+const arr = [1, 2, ...[3, 4]];
+
+/*
 // SPREAD OPERATOR
 const arr = [8,9,7];
 const newBadArr = [1, 2, arr[0], arr[1], arr[2]];
@@ -58,7 +101,7 @@ console.log(menu);
 // FIX BUG !!!! ITERABLES ARE : All data structures, except THE OBJECTS (Arrays, Strings, maps, sets)
 
 const str = 'Jonas';
-const letters = [...str, ' ', 'S.']
+const letters = [...str, ' ', 'S.'] 
 console.log(letters);
 console.log(...str);
 
@@ -91,7 +134,7 @@ console.log(restaurantCopy.name); // U SEE??? ! ITS CHANGING JUST ONE ! (JUST IN
 
 // destructuring objects 
 
-/*
+
 restaurant.orderDelivery({
   time: '00:53',
   adress: 'Kozatska 15',
