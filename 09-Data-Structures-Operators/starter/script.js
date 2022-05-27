@@ -39,6 +39,54 @@ const restaurant = {
   }
 };
 
+// NULIST COALESCING OPERATOR 
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+//NULISH VALUES ARE: null and undefined ( NOT INCLUDED 0 or " " );
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
+
+
+/*
+
+// 3 things about LOGICAL OPERATORS: 1) use ANY data type; 2)return ANY data type; 3)short-circuiting evaluation (in case of "OR" operator- if 1st value is a truthy value - it will immediately return the first value)
+
+console.log('====== OR =====');
+console.log(3 || "Suluguni");
+//AND ! if all of them are falsy - then it will return the last:
+console.log(undefined || null);
+//examples :
+console.log("" || "Soso");
+console.log(true || 0);
+console.log(undefined || null || "" || 'HI' || 23 || 0);
+
+restaurant.numGuests = 23;
+const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guest1);
+// INSTEAD we could do this : 
+const guest2 = restaurant.numGuests || 10;
+console.log(guest2);
+console.log('======= AND =======');
+// AND operator works in OPPOSITE WAY: it will immediately return the first falsy value. Or if all walues are truthy - i will return the last
+console.log(0 && 'Jonas'); 
+console.log(7 && 'Jonas');
+
+console.log('HI' && 23 && null && 13 && 'OK');  
+
+// PRACTICAL EXAMPLE 
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'suluguni');
+}
+// INSTeAD we can do this :
+restaurant.orderPizza && restaurant.orderPizza('Mushrooms', 'suluguni');
+
+// FIX BUG SO !!! in practical applications we can use the OR operator to set default values, and AND operator to execute code in the second operand if the first one is true;
+
+
+
+
+
 //  REST PATTERN  1) DESTRUCTURING
 
 // REST coz on the LEFT side of =
@@ -50,6 +98,7 @@ console.log(pizza, risotto, otherMenu); // FIX so it not includes any SKIPPED el
 
 // OBJECTS with REST 
 const { sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
 
 // 2) Functions (rest parametr)
 
@@ -76,7 +125,7 @@ restaurant.orderPizza('mushrooms', ' ananas', ' Suluguni', " chiken");
 // SPREAD coz on the RIGHT side of =
 const arr = [1, 2, ...[3, 4]];
 
-/*
+
 // SPREAD OPERATOR
 const arr = [8,9,7];
 const newBadArr = [1, 2, arr[0], arr[1], arr[2]];
