@@ -50,9 +50,118 @@ const restaurant = {
     }
   }
 };
+// !!! WORKING WITH STRINGS !!!
 
-/////////////////////////////////
+// FIX  1) Some methods are : .toLowerCase, .toUpperCase, .slice, .trim, .startWith, .endWith, .includes, .replace.
+// FIX 2) When we take inputs information from a user, almost at 100% situations we need to use .toLowerCase (to compare that information with something)
+
 /*
+const airLine = 'TAP Air Portugal';
+
+console.log(airLine.toLowerCase());
+console.log(airLine.toUpperCase());
+
+// Fix capitalization in name
+const capitalization = function (passenger) {
+  const passengerLower = passenger.toLowerCase();
+  const passengerFixed =
+    passengerLower[0].toUpperCase() + passengerLower.slice(1);
+  console.log(passengerFixed);
+};
+capitalization('WALERA');
+
+// Comparing  email
+
+// const email = 'hello@jonas.io';
+// const loginEmail = '  Hello@JoNas.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail);
+
+// const checkEmails = function (trueMail, onesToCheck) {
+//   trueMail = prompt('Enter first email');
+//   onesToCheck = prompt(' Enter emails that need to be checked');
+//   const normalizedEmail = onesToCheck.toLowerCase().trim();
+//   return console.log(
+//     `The emails are ${trueMail === normalizedEmail ? 'totally' : 'NOT'} matched`
+//   );
+// };
+// checkEmails();
+
+// REPLACING
+const priceGB = '299,97&';
+const priceUS = priceGB.replace('&', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23! ';
+console.log(announcement.replace('door', 'gate'));
+// console.log(announcement.replaceAll('door', 'gate')); OR USE REGULAR EXPRASSION :
+
+console.log(announcement.replace(/door/g, 'gate'));
+
+// Booleans
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('Ai'));
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family ');
+}
+
+// Practice exercise
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOW allowed on board');
+  } else {
+    console.log('Welcome aboard! ');
+  }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
+////////////////////////////////////
+
+
+const plane = 'A320';
+
+console.log(airLine.slice(4)); // = Air Portugal - SUBSTRING
+console.log(airLine.slice(4, 7)); // - begin and end(not included in the string)
+
+// BUG All methods always return a NEW string. mutating of already existing string CANNOT BE DONE
+
+console.log(airLine.slice(0, airLine.indexOf(' '))); // first word
+console.log(airLine.slice(airLine.lastIndexOf(' ') + 1)); //end word
+
+console.log(airLine.slice(-3)); // start from the end
+console.log(airLine.slice(1, -1)); // obrezal po 1 bukve s na4 i s konca
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  // if (s === 'B' || s === 'E') console.log('You got the middle seat  🥸');
+  // else console.log('You got lucky 😀');
+  console.log(
+    `Your seat is ${seat}. It is ${
+      s === 'B' || s === 'E' ? '' : 'NOT'
+    } in the middle`
+  );
+};
+checkMiddleSeat('3B');
+checkMiddleSeat('33E');
+checkMiddleSeat('17A');
+checkMiddleSeat('21C');
+
+// FIX !! WHEN WE CALL A METHOD ON A STRING, JS AUTOMATICALLY BEHIND THE SCENES CONVERT PRIMITIVE STRING INTO AN OBJECT AND THEN< AFTER THE JOB IS DONE - CONVERT BACK. IT CALLED  !! BOXING !!
+// FIX !! EVEN IF WE CALL STRING METHOD ON A STRING OBJECT - IT WILL ALSO RETURN US A PRIMITIVE STRING ( BTW ; )
+/////////////////////////////////
+
 
 
 !!! MAPS 2 !!!
