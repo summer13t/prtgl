@@ -52,16 +52,62 @@ const restaurant = {
 };
 // !!! WORKING WITH STRINGS !!!
 
-// FIX  1) Some methods are : .toLowerCase, .toUpperCase, .slice, .trim, .startWith, .endWith, .includes, .replace.
+/*
+
+// FIX  1) Some methods are : .toLowerCase, .toUpperCase, .slice, .trim, .startWith, .endWith, .includes, .replace, .split, .join, .padStart, .padEnd
 // FIX 2) When we take inputs information from a user, almost at 100% situations we need to use .toLowerCase (to compare that information with something)
 
-/*
+// .split  and .join methods FIX
+console.log('a+very+nice+string'.split('+'));
+console.log('Jonas Schmedtmann'.split(' '));
+
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const upperNames = [];
+  for (const n of names) {
+    // upperNames.push(n[0].toUpperCase() + n.slice(1));
+    upperNames.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(upperNames.join(' '));
+};
+capitalizeName('jessica ann smith davis');
+capitalizeName('jonas scmhedtmann');
+
+// padding FIX
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+').padEnd(35, '+')); // (first parametr - total lenght of string, that we want it to be; second - by what characters we will extend it)
+console.log('Jonas'.padStart(25, '+').padEnd(35, '+')); // padEND - we will add it in end. and 35 - total number of characters
+
+const maskCreditCard = function (number) {
+  const str = number + ''; // or =  String(number)
+  const maskedCard = str.slice(-4).padStart(str.length, '*');
+  console.log(maskedCard);
+};
+maskCreditCard(242314234123276432);
+maskCreditCard('234514221321316214');
+maskCreditCard('23341');
+
+// Repeat FIX
+const message2 = 'Bad weather... All Departures Depayed...';
+console.log(message2.repeat(5)); // param - how many times we will repeat it
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line to start ${`✈️`.repeat(n)}`);
+};
+planesInLine(17);
+
+
+//////////////////////
 const airLine = 'TAP Air Portugal';
 
 console.log(airLine.toLowerCase());
 console.log(airLine.toUpperCase());
 
-// Fix capitalization in name
+// FIX capitalization in name
 const capitalization = function (passenger) {
   const passengerLower = passenger.toLowerCase();
   const passengerFixed =
@@ -70,7 +116,7 @@ const capitalization = function (passenger) {
 };
 capitalization('WALERA');
 
-// Comparing  email
+// FIX Comparing  email
 
 // const email = 'hello@jonas.io';
 // const loginEmail = '  Hello@JoNas.Io \n';
@@ -90,7 +136,7 @@ capitalization('WALERA');
 // };
 // checkEmails();
 
-// REPLACING
+// FIX REPLACING
 const priceGB = '299,97&';
 const priceUS = priceGB.replace('&', '$').replace(',', '.');
 console.log(priceUS);
@@ -102,7 +148,7 @@ console.log(announcement.replace('door', 'gate'));
 
 console.log(announcement.replace(/door/g, 'gate'));
 
-// Booleans
+// FIX BOOLEANS
 const plane = 'Airbus A320neo';
 console.log(plane.includes('A320'));
 console.log(plane.includes('Boeing'));
@@ -112,7 +158,7 @@ if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
   console.log('Part of the NEW Airbus family ');
 }
 
-// Practice exercise
+// FIX  Practice exercise
 
 const checkBaggage = function (items) {
   const baggage = items.toLowerCase();
