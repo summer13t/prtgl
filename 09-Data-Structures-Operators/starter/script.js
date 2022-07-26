@@ -50,13 +50,32 @@ const restaurant = {
     }
   }
 };
-// !!! WORKING WITH STRINGS !!!
 
 /*
+// !!! String Methods Practice !!!
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+const getCode = str => str.slice(0, 3).toUpperCase();
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Del') ? '*' : ''}${type.replaceAll(
+    '_',
+    ' '
+  )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
+    ':',
+    'h'
+  )})`.padStart(45);
+  console.log(output);
+}
+// !!! WORKING WITH STRINGS !!!
+
+
 
 // FIX  1) Some methods are : .toLowerCase, .toUpperCase, .slice, .trim, .startWith, .endWith, .includes, .replace, .split, .join, .padStart, .padEnd
 // FIX 2) When we take inputs information from a user, almost at 100% situations we need to use .toLowerCase (to compare that information with something)
-
+// FIX !!! SPLIT RAZDELIT PO VIBRANNOMY NA OTDELNIE ELEMENTI I POSTAVIT IH V ARRAY
+// FIX JOIN SOEDENIT ELEMENTI ARRAY V EDINIY STRING I RAZDELIT IH PO VIBRANNOMY V SKOBKAX
 // .split  and .join methods FIX
 console.log('a+very+nice+string'.split('+'));
 console.log('Jonas Schmedtmann'.split(' '));
